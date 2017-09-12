@@ -65,6 +65,33 @@
         android:layout_toEndOf="@+id/Spinner_city"
         android:text="柜" />
 
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type something here"
+        android:maxLines="2"
+        />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Spinner_city"
+        android:layout_marginTop="14dp"
+        android:layout_toStartOf="@+id/textView4"
+        android:text="Button"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/button"
+        android:layout_toEndOf="@+id/textView"
+        app:srcCompat="@color/colorAccent"
+        android:src="@drawable/clock2"
+        />
 
 
 </RelativeLayout>

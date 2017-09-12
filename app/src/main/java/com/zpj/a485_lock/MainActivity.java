@@ -1,17 +1,20 @@
 package com.zpj.a485_lock;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private List<String> list = new ArrayList<String>();
     private List<String> list1 = new ArrayList<String>();
@@ -26,14 +29,17 @@ public class MainActivity extends AppCompatActivity {
     private TextView myTextView1;
     private Spinner mySpinner1;
 
+    private EditText editText;
+    private Button   button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //第一步：添加一个下拉列表项的list，这里添加的项就是下拉列表的菜单项
-        list.add("1");
-        list.add("2");
+        list.add("clock1");
+        list.add("clock2");
         list.add("3");
         list.add("4");
         list.add("5");
@@ -78,9 +84,9 @@ public class MainActivity extends AppCompatActivity {
         list.add("44");
         list.add("45");
         list.add("46");
-
-        list1.add("1");
-        list1.add("2");
+/*
+        list1.add("clock1");
+        list1.add("clock2");
         list1.add("3");
         list1.add("4");
         list1.add("5");
@@ -102,7 +108,24 @@ public class MainActivity extends AppCompatActivity {
         list1.add("21");
         list1.add("22");
         list1.add("23");
-        list1.add("24");
+        list1.add("24");*/
+
+        list1.add("/dev/ttyGS3");
+        list1.add("/dev/ttyGS2");
+        list1.add("/dev/ttyGS1");
+        list1.add("/dev/ttyGS0");
+        list1.add("/dev/ttymxc6");
+        list1.add("/dev/ttymxc5");
+        list1.add("/dev/ttymxc4");
+        list1.add("/dev/ttymxc3");
+        list1.add("/dev/ttymxc2");
+        list1.add("/dev/ttymxc1");
+        list1.add("/dev/ttymxc0");
+
+        button = (Button) findViewById(R.id.button);
+        editText = (EditText) findViewById(R.id.edit_text);
+        button.setOnClickListener(this);
+
 
 
         myTextView = (TextView)findViewById(R.id.textView);
@@ -144,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 // TODO Auto-generated method stub
                 /* 将所选mySpinner 的值带入myTextView 中*/
-                myTextView1.setText("您选择的柜号是："+ adapter.getItem(arg2));
+                myTextView1.setText("您选择的串口是："+ adapter1.getItem(arg2));
                 /* 将mySpinner 显示*/
                 arg0.setVisibility(View.VISIBLE);
             }
@@ -159,5 +182,16 @@ public class MainActivity extends AppCompatActivity {
 //        mySpinner = (Spinner)findViewById(R.id.Spinner_city);
 
 
+    }
+
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.button:
+                String inputText = editText.getText().toString();
+                Toast.makeText(MainActivity.this, inputText, Toast.LENGTH_SHORT).show();;
+                break;
+            default:
+                break;
+        }
     }
 }
